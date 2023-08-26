@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { Buscador } from "./components/Buscador";
+import { Crear } from "./components/Crear";
+import { Listado } from "./components/Listado";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="layout">
+    {/*Cabecera*/}
+    <header className="header">
+        <div className="logo">
+            <div className="play"></div>
+        </div>
+        
+        <h1>MisPelis</h1>
+    </header>
+
+    {/*Barra de navegación*/}
+    <nav className="nav">
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Peliculas</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Hola</a></li>
+        </ul>
+    </nav>
+
+    {/*Contenido principal*/}
+    <section id="content" className="content">
+
+        {/*aqui van las peliculas*/}
+        <Listado />
+    </section>
+
+    {/*Barra lateral*/}
+    <aside className="lateral">
+   <Buscador />
+
+    <Crear />
+</aside>
+
+    {/*Pie de página*/}
+    <footer className="footer">
+        © Máster en React - <a href="https://victorroblesweb.es">victorroblesweb.es</a>
+    </footer>
+
     </div>
   );
 }
