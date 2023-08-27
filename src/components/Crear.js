@@ -15,18 +15,33 @@ export const Crear = () => {
 
         // Conseguir datos del formulario
         const target = e.target;
-        const titulo = target.titulo.value;
-        const descripcion = target.descripcion.value;
+        const nuevoTitulo = target.titulo.value;
+        const nuevaDescripcion = target.descripcion.value;
 
         // Crear objeto de la película a guardar
         const peli = {
             id: new Date().getTime(),
-            titulo,
-            descripcion
+            titulo: nuevoTitulo,
+            descripcion: nuevaDescripcion
         };
 
+        // Guardar estado
         setPelistate(peli);
-    };
+
+        // Guardar en el almacenamiento local
+        guardarEnStorage(peli);
+    }
+
+    const guardarEnStorage = peli => {
+        // Conseguir los elementos que ya tenemos en el localstorage
+        let elementos = JSON.parse(localStorage.getItem("pelis")) || [];
+
+        // Añadir dentro del array un elemento nuevo
+        elementos.push(peli);
+
+        // Guardar en el localstorage
+        localStorage.setItem("pelis", JSON.stringify(elementos));
+    }
 
     return (
         <div className="add">
